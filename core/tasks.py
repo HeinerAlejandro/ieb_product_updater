@@ -15,9 +15,7 @@ from .models import Product
 
 @app.task
 def update_prices():
-    Product.objects.all().update(
-        F('selling_price') * 1.1
-    )
+    Product.objects.all().update(F("selling_price") * 1.1)
 
 
 @app.on_after_configure.connect()

@@ -9,11 +9,8 @@ django.setup()
 from django.conf import settings
 
 
-app = Celery(
-    "ieb_product_updater",
-    broker_url=settings.BROKER_URL
-)
+app = Celery("ieb_product_updater", broker_url=settings.BROKER_URL)
 
-app.config_from_object('ieb_product_updater:settings')
+app.config_from_object("ieb_product_updater:settings")
 
 app.autodiscover_tasks()

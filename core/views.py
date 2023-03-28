@@ -15,13 +15,5 @@ from .serializers import ProductSerializer
 class ProductReadOnlyViewSet(ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filterset_fields = [
-        'buying_price',
-        'selling_price',
-        'description'
-    ]
-    ordering_fields = [
-        'buying_price',
-        'selling_price',
-        'description'
-    ]
+    filterset_fields = ["buying_price", "selling_price", "description"]
+    ordering_fields = ["buying_price", "selling_price", "description"]

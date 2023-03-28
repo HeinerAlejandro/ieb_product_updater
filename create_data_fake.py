@@ -1,6 +1,7 @@
 import os
 
 import django
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ieb_product_updater.settings")
 django.setup()
 
@@ -15,19 +16,15 @@ from core.models import Product
 fake = Faker()
 
 for k in range(100):
-
     base_price = fake.pydecimal(
-        left_digits=5,
-        right_digits=2,
-        positive=True,
-        min_value=1000.00
+        left_digits=5, right_digits=2, positive=True, min_value=1000.00
     )
 
     product = Recipe(
         Product,
         description=fake.random(),
         buying_price=base_price,
-        selling_price=base_price * decimal.Decimal(1.3)
+        selling_price=base_price * decimal.Decimal(1.3),
     )
 
     product.make()

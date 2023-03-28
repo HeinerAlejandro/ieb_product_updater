@@ -8,6 +8,4 @@ router = routers.SimpleRouter()
 
 router.register(r"products", ProductReadOnlyViewSet)
 
-urlpatterns = [
-    path("", include(router.urls))
-]
+urlpatterns = [path("", include(router.urls))]
