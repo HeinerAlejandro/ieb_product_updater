@@ -73,6 +73,9 @@ cover/
 # statics
 static/
 
+#sqlite
+db.sqlite3
+
 # Flask stuff:
 instance/
 .webassets-cache
