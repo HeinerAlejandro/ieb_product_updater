@@ -13,4 +13,6 @@ app = Celery("ieb_product_updater", broker_url=settings.BROKER_URL)
 
 app.config_from_object("ieb_product_updater:settings")
 
-app.autodiscover_tasks()
+app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+
+app.conf.beat_schedule = settings.CELERY_BEAT_SCHEDULE

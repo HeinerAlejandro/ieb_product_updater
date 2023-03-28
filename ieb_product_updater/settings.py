@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,6 +83,13 @@ TEMPLATES = [
         },
     },
 ]
+
+CELERY_BEAT_SCHEDULE = {
+    "update_prices": {
+        "task": "core.tasks.update_prices",
+        "schedule": crontab(minute=f"*/{os.getenv('IEB_INTERVAL', 5)}")
+    }
+}
 
 WSGI_APPLICATION = "ieb_product_updater.wsgi.application"
 
