@@ -22,7 +22,7 @@ for k in range(100):
 
     product = Recipe(
         Product,
-        description=fake.random(),
+        description=fake.word(),
         buying_price=base_price,
         selling_price=base_price * decimal.Decimal(1.3),
     )
