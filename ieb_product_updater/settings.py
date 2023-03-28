@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("IEB_DJ_SECRET_KEY")
+SECRET_KEY = os.getenv("IEB_DJ_SECRET_KEY", "not+secret")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("IEB_DJ_DEBUG")
+DEBUG = os.getenv("IEB_DJ_DEBUG", True)
 
-ALLOWED_HOSTS = os.getenv("IEB_DJ_ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = os.getenv("IEB_DJ_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 
 # Application definition
@@ -147,9 +147,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-RABBIT_USER = os.getenv("RABBITMQ_DEFAULT_USER")
-RABBIT_PASS = os.getenv("RABBITMQ_DEFAULT_PASS")
-RABBIT_VHOST = os.getenv("RABBITMQ_DEFAULT_VHOST")
+RABBIT_USER = os.getenv("RABBITMQ_DEFAULT_USER", "user")
+RABBIT_PASS = os.getenv("RABBITMQ_DEFAULT_PASS", "1234")
+RABBIT_VHOST = os.getenv("RABBITMQ_DEFAULT_VHOST", "default")
 BROKER_URL = f"amqp://{RABBIT_USER}:{RABBIT_PASS}@rabbitmq_service/{RABBIT_VHOST}"
 
 SPECTACULAR_SETTINGS = {
