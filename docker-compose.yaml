@@ -24,7 +24,6 @@ services:
         restart: always
 
         depends_on:
-          - ieb_product_updater_service
           - rabbitmq_service
         networks:
           - app_net_s3
@@ -38,7 +37,6 @@ services:
       command: "celery -A ieb_product_updater.celery.app worker -l info"
       restart: always
       depends_on:
-        - ieb_product_updater_service
         - rabbitmq_service
       networks:
         - app_net_s3
