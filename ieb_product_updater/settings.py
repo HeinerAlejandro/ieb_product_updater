@@ -87,7 +87,7 @@ TEMPLATES = [
 CELERY_BEAT_SCHEDULE = {
     "update_prices": {
         "task": "core.tasks.update_prices",
-        "schedule": crontab(minute=f"*/{os.getenv('IEB_INTERVAL', 5)}")
+        "schedule": crontab(minute=f"*/{os.getenv('IEB_INTERVAL', 5)}"),
     }
 }
 
