@@ -6,7 +6,7 @@ python manage.py spectacular --color --file ./schema.yaml
 python manage.py makemigrations --no-input
 python manage.py migrate --no-input
 
-if [$IEB_DJ_DATA_FAKE==true]
+if ["$IEB_DJ_DATA_FAKE" = true];
   then
     python ./create_data_fake.py;
   fi
